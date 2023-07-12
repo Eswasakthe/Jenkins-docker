@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/Eswasakthe/jenkins-docker.git'
+            }
+        }
+        stage('build-image') {
+            steps {
+                sh 'docker.build("eswasakthe/jenkins:latest")'
+            }
+        }
+    }
+}
